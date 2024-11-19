@@ -1,0 +1,262 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-image: url("../images/EventBackground2.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f4f4f4;
+}
+
+/* Header styling */
+header {
+    background-color: #0B6119;
+    border-radius: 20px;
+    margin-top: 25px;
+    color: #D9D9D9;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Navigation styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Dropdown menu styling */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #054112;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+nav ul li ul li {
+    width: 180px;
+}
+
+nav ul li ul li a {
+    padding: 12px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+/* Hover effect */
+nav ul li a:hover,
+nav ul li ul li a:hover {
+    background-color: #18821F;
+}
+
+/* Main Content Styling */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+/* Event details container */
+.event-details {
+    background-color: rgba(11, 97, 25, 0.8);
+    width: 700px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.event-details h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #D9D9D9;
+}
+
+.event-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.event-details h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #92E0A6;
+}
+
+/* Form elements within event details */
+textarea,
+input[type="text"],
+input[type="date"],
+input[type="time"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid #92E0A6;
+    background-color: #1C7C43;
+    font-size: 16px;
+    color: white;
+}
+
+button:hover,
+textarea:hover,
+input[type="text"]:hover,
+input[type="date"]:hover,
+input[type="time"]:hover {
+    background-color: #18821F;
+    color: #fff;
+}
+
+/* Additional info & Invitees styling */
+#guest-emails-container {
+    margin-bottom: 15px;
+}
+
+#guest-emails-container p {
+    font-size: 14px;
+    color: #D9D9D9;
+}
+
+#guest-emails-container span {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 8px 12px;
+    background-color: #18821F;
+    color: white;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+#guest-emails-container span button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#guest-emails-container span button:hover {
+    color: #ff4f4f;
+}
+
+/* Comments section styling */
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comments-list li {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.comments-list p {
+    font-size: 16px;
+    color: #D9D9D9;
+}
+
+.comments-list small {
+    font-size: 12px;
+    color: #A5A5A5;
+}
+
+textarea[name="comment"] {
+    resize: vertical;
+    height: 80px;
+}
+
+textarea[name="comment"]:focus {
+    outline: none;
+    border-color: #92E0A6;
+}
+
+/* Event Actions (Edit, Delete) */
+.event-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.event-actions .button {
+    padding: 12px 25px;
+    background-color: #18821F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.event-actions .button:hover {
+    background-color: #0B6119;
+}
+
+.event-actions form {
+    margin-left: 10px;
+}
+
+.event-actions .delete {
+    background-color: #590101;
+}
+
+.event-actions .delete:hover {
+    background-color: #590101;
+}
+
+/* Footer styling */
+footer {
+    background-color: #073d10;
+    color: #d9d9d9;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 30px;
+}

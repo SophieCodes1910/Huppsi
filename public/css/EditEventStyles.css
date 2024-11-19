@@ -1,0 +1,180 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-image: url("../images/EventBackground2.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+header {
+    background-color: #0B6119;
+    border-radius: 20px;
+    margin-top: 25px;
+    color: #D9D9D9;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown menu styling */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #054112;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li ul li {
+    width: 150px;
+}
+
+nav ul li ul li a {
+    padding: 10px;
+    color: #fff;
+}
+
+/* Show the dropdown on hover */
+nav ul li:hover > ul {
+    display: block;
+}
+
+/* Styling for hover effect */
+nav ul li a:hover,
+nav ul li ul li a:hover {
+    background-color: #054112;
+}
+
+/* Main Content Styling */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Event form container styling */
+.event-form-container {
+    margin-top: 20px;
+    background-color: #0B6119;
+    width: 500px;
+    padding: 20px;
+    border: 3px solid #d6d6d6;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading for form */
+h2 {
+    margin-bottom: 20px;
+    color: #D9D9D9;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: #D9D9D9;
+}
+
+/* Input and textarea styling */
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #92E0A6;
+    border-radius: 10px;
+    background-color: #92E0A6;
+}
+
+/* Guest email submission container */
+#guest-emails-container {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+#guest-emails-container p {
+    font-size: 14px;
+    color: #D9D9D9;
+    margin-top: 10px;
+}
+
+#guest-emails-container span {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #18821F;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#guest-emails-container span button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Submit button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #92E0A6;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #18821F;
+    color: #D9D9D9;
+}
+
+/* Footer styling */
+footer {
+    background-color: #073d10;
+    color: #d9d9d9;
+    padding: 10px;
+    text-align: center;
+}

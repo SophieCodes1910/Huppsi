@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Event - Huppsi</title>
+    <link rel="stylesheet" href="/css/CreateEventStyles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Create a New Event</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Event/Events">Events</a>
+                    <ul>
+                        <li><a href="/Event/CreateEvent">Create Event</a></li>
+                        <li><a href="/ManageEvents">Manage Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="event-form-container">
+            <h2>Event Details</h2>
+            <form action="/Event/CreateEvent" method="POST">
+                <!-- Event Name -->
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="eventName" required>
+
+                <!-- Event Description -->
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <!-- Private/Public Event Checkbox -->
+                <label for="event-type">Private Event:</label>
+                <input type="checkbox" id="event-type" name="eventType"> 
+
+                <button type="submit">Create Event</button>
+           </form>>
+        </div>
+    </main>
+</body>
+</html>
+

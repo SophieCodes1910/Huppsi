@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Events</title>
+    <link rel="stylesheet" href="/css/EventStyles.css">
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Event/Events">Events</a>
+                    <ul>
+                        <li><a href="/Event/CreateEvent">Create Event</a></li>
+                        <li><a href="/ManageEvents">Manage Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Display events the user has created -->
+        <section>
+            <h2>Events You Have Created</h2>
+            <% if (createdEvents && createdEvents.length > 0) { %>
+                <ul>
+                    <% createdEvents.forEach(event => { %>
+                        <li>
+                            <h3><a href="/Event/EventDetails/<%= event.id %>"><%= event.eventName %></a></h3>
+                            <p><%= event.description %></p>
+                            <p><strong>Type:</strong> <%= event.isPrivate ? 'Private' : 'Public' %></p>
+                            <% if (event.createdAt) { %>
+                                <p><strong>Created on:</strong> <%= new Date(event.createdAt).toLocaleDateString() %></p>
+                            <% } %>
+                            <!-- Edit and Delete buttons for created events -->
+                            <div class="event-actions">
+                                <a href="/Event/EditEvent/<%= event.id %>">
+                                    <button>Edit</button>
+                                </a>
+                                <form action="/Event/DeleteEvent/<%= event.id %>" method="POST" style="display:inline;">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>You have not created any events yet.</p>
+            <% } %>
+        </section>
+
+        <!-- Display events the user is invited to -->
+        <section>
+            <h2>Events You Are Invited To</h2>
+            <% if (invitedEvents && invitedEvents.length > 0) { %>
+                <ul>
+                    <% invitedEvents.forEach(event => { %>
+                        <li>
+                            <h3><a href="/Event/EventDetails/<%= event.id %>"><%= event.eventName %></a></h3>
+                            <p><%= event.description %></p>
+                            <p><strong>Type:</strong> <%= event.isPrivate ? 'Private' : 'Public' %></p>
+                            <% if (event.createdAt) { %>
+                                <p><strong>Created on:</strong> <%= new Date(event.createdAt).toLocaleDateString() %></p>
+                            <% } %>
+                            <!-- No Edit/Delete options for invited events -->
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>You have no event invitations at the moment.</p>
+            <% } %>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Huppsi</p>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Event/Events">Events</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

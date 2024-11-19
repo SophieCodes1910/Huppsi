@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= event.eventName %> - Event Details</title>
+    <link rel="stylesheet" href="/css/EventDetailsStyles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Event/Events">Events</a>
+                    <ul>
+                        <li><a href="/Event/CreateEvent">Create Event</a></li>
+                        <li><a href="/ManageEvents">Manage Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Event Details Section -->
+    <main>
+        <section class="event-details">
+            <h1><%= event.eventName %></h1>
+            <p><strong>Description:</strong> <%= event.description || 'No description available' %></p>
+            <p><strong>Organizer:</strong> <%= event.createdBy %></p>
+            <p><strong>Date:</strong> <%= new Date(event.eventDate).toLocaleDateString() %></p>
+            <p><strong>Time:</strong> <%= event.startTime %></p>
+            <p><strong>Location:</strong> <%= event.location || 'Not specified' %></p>
+            <p><strong>Event Type:</strong> <%= event.isPrivate ? 'Private' : 'Public' %></p>
+        </section>
+
+        <!-- Media Upload Section -->
+        <section class="media-upload">
+            <h2>Upload Media</h2>
+            <form action="/Event/AddMedia/<%= event.id %>" method="post" enctype="multipart/form-data">
+                <input type="file" name="media" multiple accept="image/*, video/*" required />
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        <!-- Display uploaded media -->
+        <% if (event.media && event.media.length > 0) { %>
+            <section class="uploaded-media">
+                <h3>Uploaded Media</h3>
+                <div class="media-gallery">
+                    <% event.media.forEach(mediaUrl => { %>
+                        <div class="media-item">
+                            <% if (mediaUrl.endsWith('.mp4') || mediaUrl.endsWith('.mov')) { %>
+                                <video width="320" height="240" controls>
+                                    <source src="<%= mediaUrl %>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            <% } else { %>
+                                <img src="<%= mediaUrl %>" alt="Media" width="320" height="240" />
+                            <% } %>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+        <% } %>
+
+        <section class="comments">
+            <h2>Comments</h2>
+            <form action="/Event/AddComment/<%= event.id %>" method="post">
+                <textarea name="comment" placeholder="Add a comment..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+
+            <% if (event.comments && event.comments.length > 0) { %>
+                <ul>
+                    <% event.comments.forEach(comment => { %>
+                        <li><strong><%= comment.author %></strong>: <%= comment.text %></li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No comments yet.</p>
+            <% } %>
+        </section>
+
+    </main>
+
+</body>
+</html>

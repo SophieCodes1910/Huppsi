@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event - Huppsi</title>
+    <link rel="stylesheet" href="/css/EditEventStyles.css">
+    <script>
+        // Function to update email list UI and hidden input
+        function manageEmails() {
+            const emailInput = document.getElementById('invitees');
+            const emailListContainer = document.getElementById('email-list');
+            const hiddenField = document.getElementById('invitees-hidden');
+            const emails = hiddenField.value.split(',').filter(email => email);
+
+            if (emailInput.value.trim()) {
+                emails.push(emailInput.value.trim());
+                emailInput.value = '';
+            }
+
+            hiddenField.value = emails.join(',');
+
+            emailListContainer.innerHTML = emails.map((email, index) =>
+                `<div class="email-item">
+                    <span>${email}</span>
+                    <button type="button" onclick="removeEmail(${index})">Remove</button>
+                </div>`
+            ).join('');
+        }
+
+        // Function to remove an email by index
+        function removeEmail(index) {
+            const hiddenField = document.getElementById('invitees-hidden');
+            const emails = hiddenField.value.split(',').filter(email => email);
+            emails.splice(index, 1);
+            hiddenField.value = emails.join(',');
+            manageEmails();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="/Event/Events">Events</a>
+                    <ul>
+                        <li><a href="/Event/CreateEvent">Create Event</a></li>
+                        <li><a href="/ManageEvents">Manage Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="event-form-container">
+            <h2>Edit Event</h2>
+            <form action="/Event/UpdateEvent/<%= event.id %>" method="POST" enctype="multipart/form-data" onsubmit="manageEmails()">
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="eventName" value="<%= event.eventName || '' %>">
+            
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4"><%= event.description || '' %></textarea>
+
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" name="eventDate" 
+                       value="<%= event.eventDate ? new Date(event.eventDate).toISOString().slice(0, 10) : '' %>" required>
+
+                <label for="start-time">Start Time:</label>
+                <input type="time" id="start-time" name="startTime" value="<%= event.startTime || '' %>" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" value="<%= event.location || '' %>" required>
+
+                <label for="event-type">Private Event:</label>
+                <input type="checkbox" id="event-type" name="eventType" <%= event.isPrivate ? 'checked' : '' %> >
+
+                <label for="invitees">Invitees:</label>
+                <textarea id="invitees" placeholder="Enter email addresses"></textarea>
+                <button type="button" onclick="manageEmails()">Add Emails</button>
+                <div id="email-list"></div>
+                <input type="hidden" id="invitees-hidden" name="invitees" value="<%= event.invitees ? event.invitees.join(',') : '' %>">
+
+                <label for="additional-info">Additional Info:</label>
+                <textarea id="additional-info" name="additionalInfo" rows="4"><%= event.additionalInfo || '' %></textarea>
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
