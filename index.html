@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huppsi</title>
-    <link rel="stylesheet" href="/css/indexStyles.css">
+    <link rel="stylesheet" href="/public/css/indexStyles.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/Event/Events">Events</a>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="views/Events.ejs">Events</a>
                     <ul>
-                        <li><a href="/Event/CreateEvent">Create Event</a></li>
-                        <li><a href="/ManageEvents">Manage Events</a></li>
+                        <li><a href="views/CreateEvent.ejs">Create Event</a></li>
                     </ul>
                 </li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +30,7 @@
                         <h3><%= event.eventName %></h3>
                         <p>Organizer: <%= event.organizerUsername %></p>
                         <p>Description: <%= event.description %></p>
-                        <a href="/Event/EventDetails/<%= event.id %>">View Details</a>
+                        <a href="Event/EventDetails/<%= event.id %>.html">View Details</a>
                     </li>
                 <% }); %>
             <% } else { %>
